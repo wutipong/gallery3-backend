@@ -24,10 +24,6 @@ func Init(dir string) error {
 	return nil
 }
 
-type request struct {
-	Path string `json:"path"`
-}
-
 type response struct {
 	Directories []string `json:"directories"`
 	Files       []string `json:"files"`
