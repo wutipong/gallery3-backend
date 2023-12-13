@@ -1,0 +1,48 @@
+definitions:
+  errors.Error:
+    properties:
+      cause: {}
+      code:
+        example: 0
+        type: integer
+      message:
+        example: unknown error.
+        type: string
+    type: object
+  fsmeta.response:
+    properties:
+      directories:
+        items:
+          type: string
+        type: array
+      files:
+        items:
+          type: string
+        type: array
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+info:
+  contact: {}
+  description: API Server for gallery3
+  title: Gallery3 API
+  version: "3.0"
+paths:
+  /dir/{path}:
+    get:
+      parameters:
+      - description: path
+        in: path
+        name: path
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/fsmeta.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Error'
+swagger: "2.0"
